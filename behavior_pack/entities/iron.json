@@ -43,6 +43,7 @@
             "minecraft:behavior.hurt_by_target": { "priority": 1 },
             "minecraft:behavior.look_at_player": { "priority": 8, "look_distance": 6.0 },
             "minecraft:behavior.random_look_around": { "priority": 9 },
+            "minecraft:equipment": { "table": "loot_tables/equipment/iron.json", "slot_drop_chance": [{ "slot": "slot.weapon.mainhand", "drop_chance": 0.0 }] },
             "minecraft:behavior.random_stroll": { "priority": 7, "speed_multiplier": 0.8 }
         }
     }

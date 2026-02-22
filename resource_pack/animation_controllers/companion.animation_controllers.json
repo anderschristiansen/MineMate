@@ -1,0 +1,41 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.minemate.companion": {
+            "initial_state": "idle",
+            "states": {
+                "idle": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        "look_at_target"
+                    ],
+                    "transitions": [
+                        { "walking": "query.is_moving" },
+                        { "attacking": "variable.attack_time > 0" }
+                    ]
+                },
+                "walking": {
+                    "blend_transition": 0.2,
+                    "animations": [
+                        "walk",
+                        "look_at_target"
+                    ],
+                    "transitions": [
+                        { "attacking": "variable.attack_time > 0" },
+                        { "idle": "!query.is_moving" }
+                    ]
+                },
+                "attacking": {
+                    "blend_transition": 0.1,
+                    "animations": [
+                        "attack"
+                    ],
+                    "transitions": [
+                        { "idle": "variable.attack_time <= 0 && !query.is_moving" },
+                        { "walking": "variable.attack_time <= 0 && query.is_moving" }
+                    ]
+                }
+            }
+        }
+    }
+}

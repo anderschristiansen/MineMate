@@ -6,6 +6,15 @@
             "materials": { "default": "entity_alphatest" },
             "textures": { "default": "textures/entity/gold" },
             "geometry": { "default": "geometry.humanoid" },
+            "animations": {
+                "walk": "animation.minemate.companion.walk",
+                "look_at_target": "animation.minemate.companion.look",
+                "attack": "animation.minemate.companion.attack",
+                "controller": "controller.animation.minemate.companion"
+            },
+            "scripts": {
+                "animate": [ "controller" ]
+            },
             "render_controllers": [ "controller.render.default" ],
             "spawn_egg": { "base_color": "#FFD700", "overlay_color": "#B8860B" }
         }

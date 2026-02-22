@@ -2,6 +2,24 @@ import { world, system } from "@minecraft/server";
 
 const COMPANION_FAMILY = "minemate_companion";
 
+const COMPANION_WEAPONS = {
+    "minemate:companion_dirt":    "minecraft:wooden_sword",
+    "minemate:companion_copper":  "minecraft:stone_sword",
+    "minemate:companion_iron":    "minecraft:iron_axe",
+    "minemate:companion_gold":    "minecraft:golden_sword",
+    "minemate:companion_diamond": "minecraft:diamond_sword",
+    "minemate:companion_nether":  "minecraft:netherite_axe"
+};
+
+const COMPANION_NAMES = {
+    "minemate:companion_dirt":    "Dirt Bodyguard",
+    "minemate:companion_copper":  "Copper Bodyguard",
+    "minemate:companion_iron":    "Iron Bodyguard",
+    "minemate:companion_gold":    "Gold Bodyguard",
+    "minemate:companion_diamond": "Diamond Bodyguard",
+    "minemate:companion_nether":  "Nether Bodyguard"
+};
+
 world.afterEvents.entitySpawn.subscribe((event) => {
     const entity = event.entity;
 
@@ -35,6 +53,18 @@ world.afterEvents.entitySpawn.subscribe((event) => {
         const tameable = entity.getComponent("minecraft:tameable");
         if (tameable) {
             tameable.tame(nearest);
+        }
+
+        // Set name tag so death messages show correctly (e.g. "Dirt Bodyguard died")
+        const name = COMPANION_NAMES[entity.typeId];
+        if (name) {
+            entity.nameTag = name;
+        }
+
+        // Re-equip weapon after taming (tame() resets equipment slots)
+        const weapon = COMPANION_WEAPONS[entity.typeId];
+        if (weapon) {
+            entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${weapon} 1`);
         }
     });
 });

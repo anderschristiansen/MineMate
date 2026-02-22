@@ -1,0 +1,39 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.minemate.companion.walk": {
+            "loop": true,
+            "anim_time_update": "query.modified_distance_moved",
+            "bones": {
+                "rightArm": {
+                    "rotation": ["math.cos(query.anim_time * 120.0) * 40.0", 0, 0]
+                },
+                "leftArm": {
+                    "rotation": ["-math.cos(query.anim_time * 120.0) * 40.0", 0, 0]
+                },
+                "rightLeg": {
+                    "rotation": ["-math.cos(query.anim_time * 120.0) * 40.0", 0, 0]
+                },
+                "leftLeg": {
+                    "rotation": ["math.cos(query.anim_time * 120.0) * 40.0", 0, 0]
+                }
+            }
+        },
+        "animation.minemate.companion.look": {
+            "loop": true,
+            "bones": {
+                "head": {
+                    "rotation": ["query.target_x_rotation", "query.target_y_rotation", 0]
+                }
+            }
+        },
+        "animation.minemate.companion.attack": {
+            "loop": true,
+            "bones": {
+                "rightArm": {
+                    "rotation": ["math.sin(variable.attack_time * 180.0) * -80.0", 0, 0]
+                }
+            }
+        }
+    }
+}
