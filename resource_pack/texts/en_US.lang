@@ -1,0 +1,17 @@
+## Entity names
+entity.minemate:companion_dirt.name=Dirt Bodyguard
+entity.minemate:companion_copper.name=Copper Bodyguard
+entity.minemate:companion_iron.name=Iron Bodyguard
+entity.minemate:companion_gold.name=Gold Bodyguard
+entity.minemate:companion_diamond.name=Diamond Bodyguard
+entity.minemate:companion_nether.name=Nether Bodyguard
+entity.minemate:trader.name=MineMate Trader
+
+## Spawn egg names
+item.spawn_egg.entity.minemate:companion_dirt.name=Dirt Bodyguard
+item.spawn_egg.entity.minemate:companion_copper.name=Copper Bodyguard
+item.spawn_egg.entity.minemate:companion_iron.name=Iron Bodyguard
+item.spawn_egg.entity.minemate:companion_gold.name=Gold Bodyguard
+item.spawn_egg.entity.minemate:companion_diamond.name=Diamond Bodyguard
+item.spawn_egg.entity.minemate:companion_nether.name=Nether Bodyguard
+item.spawn_egg.entity.minemate:trader.name=MineMate Trader

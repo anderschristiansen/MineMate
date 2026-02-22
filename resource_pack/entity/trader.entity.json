@@ -1,0 +1,13 @@
+{
+    "format_version": "1.8.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minemate:trader",
+            "materials": { "default": "entity_alphatest" },
+            "textures": { "default": "textures/entity/trader" },
+            "geometry": { "default": "geometry.humanoid" },
+            "render_controllers": [ "controller.render.default" ],
+            "spawn_egg": { "base_color": "#8B4513", "overlay_color": "#FFD700" }
+        }
+    }
+}

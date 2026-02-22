@@ -1,0 +1,13 @@
+{
+    "format_version": "1.8.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minemate:companion_copper",
+            "materials": { "default": "entity_alphatest" },
+            "textures": { "default": "textures/entity/copper" },
+            "geometry": { "default": "geometry.humanoid" },
+            "render_controllers": [ "controller.render.default" ],
+            "spawn_egg": { "base_color": "#E07A5F", "overlay_color": "#A3493A" }
+        }
+    }
+}

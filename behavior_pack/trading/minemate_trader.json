@@ -1,0 +1,44 @@
+{
+    "tiers": [
+        {
+            "trades": [
+                {
+                    "wants": [ { "item": "minecraft:dirt", "quantity": 16 } ],
+                    "gives": [ { "item": "minemate:companion_dirt_spawn_egg", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                },
+                {
+                    "wants": [ { "item": "minecraft:copper_ingot", "quantity": 12 } ],
+                    "gives": [ { "item": "minemate:companion_copper_spawn_egg", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                },
+                {
+                    "wants": [ { "item": "minecraft:iron_ingot", "quantity": 8 } ],
+                    "gives": [ { "item": "minemate:companion_iron_spawn_egg", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                },
+                {
+                    "wants": [ { "item": "minecraft:gold_ingot", "quantity": 8 } ],
+                    "gives": [ { "item": "minemate:companion_gold_spawn_egg", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                },
+                {
+                    "wants": [ { "item": "minecraft:diamond", "quantity": 4 } ],
+                    "gives": [ { "item": "minemate:companion_diamond_spawn_egg", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                },
+                {
+                    "wants": [ { "item": "minecraft:netherite_ingot", "quantity": 2 } ],
+                    "gives": [ { "item": "minemate:companion_nether_spawn_egg", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                }
+            ]
+        }
+    ]
+}

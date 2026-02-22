@@ -1,0 +1,17 @@
+## Entitetsnavne
+entity.minemate:companion_dirt.name=Jord Bodyguard
+entity.minemate:companion_copper.name=Kobber Bodyguard
+entity.minemate:companion_iron.name=Jern Bodyguard
+entity.minemate:companion_gold.name=Guld Bodyguard
+entity.minemate:companion_diamond.name=Diamant Bodyguard
+entity.minemate:companion_nether.name=Nether Bodyguard
+entity.minemate:trader.name=MineMate Handlende
+
+## Gydeæg navne
+item.spawn_egg.entity.minemate:companion_dirt.name=Jord Bodyguard
+item.spawn_egg.entity.minemate:companion_copper.name=Kobber Bodyguard
+item.spawn_egg.entity.minemate:companion_iron.name=Jern Bodyguard
+item.spawn_egg.entity.minemate:companion_gold.name=Guld Bodyguard
+item.spawn_egg.entity.minemate:companion_diamond.name=Diamant Bodyguard
+item.spawn_egg.entity.minemate:companion_nether.name=Nether Bodyguard
+item.spawn_egg.entity.minemate:trader.name=MineMate Handlende
