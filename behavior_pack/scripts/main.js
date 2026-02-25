@@ -7,7 +7,7 @@ const GUARD_FAMILY = "minemate_guard";
 const NPC_WEAPONS = {
     "minemate:bodyguard_dirt":    "minecraft:wooden_sword",
     "minemate:bodyguard_copper":  "minecraft:stone_sword",
-    "minemate:bodyguard_iron":    "minecraft:iron_axe",
+    "minemate:bodyguard_iron":    "minecraft:iron_sword",
     "minemate:bodyguard_gold":    "minecraft:golden_sword",
     "minemate:bodyguard_diamond": "minecraft:diamond_sword",
     "minemate:bodyguard_nether":  "minecraft:netherite_sword",
