@@ -13,7 +13,16 @@
       "Bash(ls *.png)",
       "Bash(git add behavior_pack/scripts/main.js behavior_pack/trading/minemate_trader.json resource_pack/textures/entity/dirt.png resource_pack/textures/entity/gold.png resource_pack/textures/entity/iron.png resource_pack/textures/entity/nether.png)",
       "Bash(git commit:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(powershell -ExecutionPolicy Bypass -File deploy.ps1)",
+      "Bash(ls -la \"C:\\\\Developer\\\\MineCraft\\\\MineMate\\\\resource_pack\\\\texts\"\" 2>/dev/null || find \"C:DeveloperMineCraftMineMateresource_pack\" -name \"*.lang \")",
+      "Bash(python3 -c \":*)",
+      "Bash(python -c \":*)",
+      "Bash(powershell -Command \"node --version\")",
+      "Bash(powershell -Command \"where.exe node\")",
+      "Bash(git restore resource_pack/textures/entity/dirt.png resource_pack/textures/entity/copper.png resource_pack/textures/entity/iron.png resource_pack/textures/entity/gold.png resource_pack/textures/entity/diamond.png resource_pack/textures/entity/nether.png)",
+      "Bash(git add behavior_pack/entities/bodyguard/copper.json behavior_pack/entities/bodyguard/diamond.json behavior_pack/entities/bodyguard/dirt.json behavior_pack/entities/bodyguard/gold.json behavior_pack/entities/bodyguard/iron.json behavior_pack/entities/bodyguard/nether.json behavior_pack/entities/contractor.json behavior_pack/entities/recruiter.json behavior_pack/entities/lumberjack/ behavior_pack/items/ behavior_pack/loot_tables/equipment/lumberjack.json behavior_pack/manifest.json behavior_pack/scripts/main.js behavior_pack/trading/minemate_contractor.json behavior_pack/trading/minemate_recruiter.json behavior_pack/trading/minemate_trader.json behavior_pack/entities/trader.json resource_pack/entity/bodyguard/copper.entity.json resource_pack/entity/bodyguard/diamond.entity.json resource_pack/entity/bodyguard/dirt.entity.json resource_pack/entity/bodyguard/gold.entity.json resource_pack/entity/bodyguard/iron.entity.json resource_pack/entity/bodyguard/nether.entity.json resource_pack/entity/contractor.entity.json resource_pack/entity/recruiter.entity.json resource_pack/entity/lumberjack/ resource_pack/entity/trader.entity.json resource_pack/manifest.json resource_pack/texts/da_DK.lang resource_pack/texts/en_US.lang resource_pack/textures/entity/contractor.png resource_pack/textures/entity/lumberjack.png resource_pack/textures/entity/recruiter.png resource_pack/textures/entity/trader.png resource_pack/textures/item_texture.json resource_pack/textures/items/)",
+      "Bash(git add resource_pack/entity/lumberjack/lumberjack.entity.json resource_pack/textures/item_texture.json resource_pack/textures/items/bodyguardwhistle.png resource_pack/textures/items/lumberjackwhistle.png resource_pack/textures/items/egg_copper.png resource_pack/textures/items/egg_diamond.png resource_pack/textures/items/egg_dirt.png resource_pack/textures/items/egg_gold.png resource_pack/textures/items/egg_iron.png resource_pack/textures/items/egg_nether.png resource_pack/textures/items/egg_lumberjack.png behavior_pack/manifest.json resource_pack/manifest.json lumberjack.png)"
     ]
   }
 }
