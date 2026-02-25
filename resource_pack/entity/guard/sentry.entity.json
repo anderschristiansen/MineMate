@@ -2,9 +2,9 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "identifier": "minemate:companion_diamond",
+            "identifier": "minemate:guard_sentry",
             "materials": { "default": "entity_alphatest" },
-            "textures": { "default": "textures/entity/diamond" },
+            "textures": { "default": "textures/entity/sentry" },
             "geometry": { "default": "geometry.humanoid" },
             "animations": {
                 "walk": "animation.minemate.companion.walk",
@@ -19,7 +19,7 @@
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],
-            "spawn_egg": { "base_color": "#00BCD4", "overlay_color": "#006978" }
+            "spawn_egg": { "base_color": "#8B4513", "overlay_color": "#505050" }
         }
     }
 }

@@ -2,9 +2,9 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "identifier": "minemate:companion_gold",
+            "identifier": "minemate:bodyguard_diamond",
             "materials": { "default": "entity_alphatest" },
-            "textures": { "default": "textures/entity/gold" },
+            "textures": { "default": "textures/entity/diamond" },
             "geometry": { "default": "geometry.humanoid" },
             "animations": {
                 "walk": "animation.minemate.companion.walk",
@@ -19,7 +19,7 @@
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],
-            "spawn_egg": { "base_color": "#FFD700", "overlay_color": "#B8860B" }
+            "spawn_egg": { "base_color": "#00BCD4", "overlay_color": "#006978" }
         }
     }
 }

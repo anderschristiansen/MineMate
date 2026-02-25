@@ -46,6 +46,10 @@ $utf8NoBom = New-Object System.Text.UTF8Encoding $false
 # --- Deploy ---
 Write-Host "Deploying MineMate packs..."
 
+# Clean destination folders to remove leftover files from previous versions
+if (Test-Path $bpDest) { Remove-Item $bpDest -Recurse -Force }
+if (Test-Path $rpDest) { Remove-Item $rpDest -Recurse -Force }
+
 New-Item -ItemType Directory -Force -Path $bpDest | Out-Null
 New-Item -ItemType Directory -Force -Path $rpDest | Out-Null
 

@@ -1,0 +1,25 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "minemate:bodyguard_copper",
+            "materials": { "default": "entity_alphatest" },
+            "textures": { "default": "textures/entity/copper" },
+            "geometry": { "default": "geometry.humanoid" },
+            "animations": {
+                "walk": "animation.minemate.companion.walk",
+                "look_at_target": "animation.minemate.companion.look",
+                "attack": "animation.minemate.companion.attack",
+                "controller": "controller.animation.minemate.companion"
+            },
+            "scripts": {
+                "pre_animation": [
+                    "variable.tcos0 = math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed * 57.3;"
+                ],
+                "animate": [ "controller" ]
+            },
+            "render_controllers": [ "controller.render.default" ],
+            "spawn_egg": { "base_color": "#E07A5F", "overlay_color": "#A3493A" }
+        }
+    }
+}

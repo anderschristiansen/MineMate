@@ -2,9 +2,9 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "identifier": "minemate:companion_copper",
+            "identifier": "minemate:bodyguard_dirt",
             "materials": { "default": "entity_alphatest" },
-            "textures": { "default": "textures/entity/copper" },
+            "textures": { "default": "textures/entity/dirt" },
             "geometry": { "default": "geometry.humanoid" },
             "animations": {
                 "walk": "animation.minemate.companion.walk",
@@ -19,7 +19,7 @@
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],
-            "spawn_egg": { "base_color": "#E07A5F", "overlay_color": "#A3493A" }
+            "spawn_egg": { "base_color": "#8B5E3C", "overlay_color": "#5C3A1E" }
         }
     }
 }

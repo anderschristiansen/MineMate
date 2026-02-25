@@ -2,9 +2,9 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "identifier": "minemate:companion_dirt",
+            "identifier": "minemate:bodyguard_nether",
             "materials": { "default": "entity_alphatest" },
-            "textures": { "default": "textures/entity/dirt" },
+            "textures": { "default": "textures/entity/nether" },
             "geometry": { "default": "geometry.humanoid" },
             "animations": {
                 "walk": "animation.minemate.companion.walk",
@@ -19,7 +19,7 @@
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],
-            "spawn_egg": { "base_color": "#8B5E3C", "overlay_color": "#5C3A1E" }
+            "spawn_egg": { "base_color": "#4A0000", "overlay_color": "#1A0000" }
         }
     }
 }

@@ -1,17 +1,21 @@
 ## Entity names
-entity.minemate:companion_dirt.name=Dirt Bodyguard
-entity.minemate:companion_copper.name=Copper Bodyguard
-entity.minemate:companion_iron.name=Iron Bodyguard
-entity.minemate:companion_gold.name=Gold Bodyguard
-entity.minemate:companion_diamond.name=Diamond Bodyguard
-entity.minemate:companion_nether.name=Nether Bodyguard
+entity.minemate:bodyguard_dirt.name=Dirt Bodyguard
+entity.minemate:bodyguard_copper.name=Copper Bodyguard
+entity.minemate:bodyguard_iron.name=Iron Bodyguard
+entity.minemate:bodyguard_gold.name=Gold Bodyguard
+entity.minemate:bodyguard_diamond.name=Diamond Bodyguard
+entity.minemate:bodyguard_nether.name=Nether Bodyguard
+entity.minemate:guard_soldier.name=Guard Soldier
+entity.minemate:guard_sentry.name=Guard Sentry
 entity.minemate:trader.name=MineMate Trader
 
 ## Spawn egg names
-item.spawn_egg.entity.minemate:companion_dirt.name=Dirt Bodyguard
-item.spawn_egg.entity.minemate:companion_copper.name=Copper Bodyguard
-item.spawn_egg.entity.minemate:companion_iron.name=Iron Bodyguard
-item.spawn_egg.entity.minemate:companion_gold.name=Gold Bodyguard
-item.spawn_egg.entity.minemate:companion_diamond.name=Diamond Bodyguard
-item.spawn_egg.entity.minemate:companion_nether.name=Nether Bodyguard
+item.spawn_egg.entity.minemate:bodyguard_dirt.name=Dirt Bodyguard
+item.spawn_egg.entity.minemate:bodyguard_copper.name=Copper Bodyguard
+item.spawn_egg.entity.minemate:bodyguard_iron.name=Iron Bodyguard
+item.spawn_egg.entity.minemate:bodyguard_gold.name=Gold Bodyguard
+item.spawn_egg.entity.minemate:bodyguard_diamond.name=Diamond Bodyguard
+item.spawn_egg.entity.minemate:bodyguard_nether.name=Nether Bodyguard
+item.spawn_egg.entity.minemate:guard_soldier.name=Guard Soldier
+item.spawn_egg.entity.minemate:guard_sentry.name=Guard Sentry
 item.spawn_egg.entity.minemate:trader.name=MineMate Trader

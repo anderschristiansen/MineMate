@@ -2,17 +2,17 @@
     "format_version": "1.21.70",
     "minecraft:entity": {
         "description": {
-            "identifier": "minemate:companion_dirt",
+            "identifier": "minemate:bodyguard_iron",
             "is_spawnable": true,
             "is_summonable": true,
             "is_experimental": false
         },
         "components": {
-            "minecraft:type_family": { "family": ["mob", "minemate_companion"] },
+            "minecraft:type_family": { "family": ["mob", "minemate_npc", "minemate_bodyguard"] },
             "minecraft:tameable": { "probability": 0, "tame_items": "minecraft:barrier" },
-            "minecraft:health": { "value": 20, "max": 20 },
-            "minecraft:attack": { "damage": 3 },
-            "minecraft:movement": { "value": 0.30 },
+            "minecraft:health": { "value": 40, "max": 40 },
+            "minecraft:attack": { "damage": 7 },
+            "minecraft:movement": { "value": 0.34 },
             "minecraft:movement.basic": {},
             "minecraft:navigation.walk": { "can_path_over_water": false, "avoid_water": true, "can_open_doors": true },
             "minecraft:physics": {},
@@ -31,11 +31,11 @@
                 "priority": 2,
                 "must_see": true,
                 "reselect_targets": true,
-                "within_radius": 12.0,
+                "within_radius": 16.0,
                 "entity_types": [
                     {
                         "filters": { "test": "is_family", "subject": "other", "value": "monster" },
-                        "max_dist": 12.0
+                        "max_dist": 16.0
                     }
                 ]
             },
@@ -43,7 +43,7 @@
             "minecraft:behavior.hurt_by_target": { "priority": 1 },
             "minecraft:behavior.look_at_player": { "priority": 8, "look_distance": 6.0 },
             "minecraft:behavior.random_look_around": { "priority": 9 },
-            "minecraft:equipment": { "table": "loot_tables/equipment/dirt.json", "slot_drop_chance": [{ "slot": "slot.weapon.mainhand", "drop_chance": 0.0 }] },
+            "minecraft:equipment": { "table": "loot_tables/equipment/iron.json", "slot_drop_chance": [{ "slot": "slot.weapon.mainhand", "drop_chance": 0.0 }] },
             "minecraft:behavior.random_stroll": { "priority": 7, "speed_multiplier": 0.8 }
         }
     }

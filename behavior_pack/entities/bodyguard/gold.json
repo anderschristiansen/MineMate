@@ -2,13 +2,13 @@
     "format_version": "1.21.70",
     "minecraft:entity": {
         "description": {
-            "identifier": "minemate:companion_gold",
+            "identifier": "minemate:bodyguard_gold",
             "is_spawnable": true,
             "is_summonable": true,
             "is_experimental": false
         },
         "components": {
-            "minecraft:type_family": { "family": ["mob", "minemate_companion"] },
+            "minecraft:type_family": { "family": ["mob", "minemate_npc", "minemate_bodyguard"] },
             "minecraft:tameable": { "probability": 0, "tame_items": "minecraft:barrier" },
             "minecraft:health": { "value": 50, "max": 50 },
             "minecraft:attack": { "damage": 9 },

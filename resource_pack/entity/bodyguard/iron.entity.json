@@ -2,9 +2,9 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "identifier": "minemate:companion_nether",
+            "identifier": "minemate:bodyguard_iron",
             "materials": { "default": "entity_alphatest" },
-            "textures": { "default": "textures/entity/nether" },
+            "textures": { "default": "textures/entity/iron" },
             "geometry": { "default": "geometry.humanoid" },
             "animations": {
                 "walk": "animation.minemate.companion.walk",
@@ -19,7 +19,7 @@
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],
-            "spawn_egg": { "base_color": "#4A0000", "overlay_color": "#1A0000" }
+            "spawn_egg": { "base_color": "#9E9E9E", "overlay_color": "#616161" }
         }
     }
 }
