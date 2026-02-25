@@ -57,7 +57,7 @@
                         "on_interact": {
                             "filters": { "test": "is_family", "subject": "other", "value": "player" }
                         },
-                        "interact_text": "Toggle Chopping",
+                        "interact_text": "minemate.interact.chop_toggle",
                         "use_item": false
                     }
                 ]

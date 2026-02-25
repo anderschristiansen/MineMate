@@ -27,3 +27,16 @@ item.spawn_egg.entity.minemate:lumberjack.name=Skovhugger
 ## Genstandsnavne
 item.minemate:bodyguard_whistle.name=Bodyguard Fløjte
 item.minemate:lumberjack_whistle.name=Skovhugger Fløjte
+
+## Interaktionsknapper
+minemate.interact.stay_follow=Bliv / Følg
+minemate.interact.chop_toggle=Skift hugning
+
+## Chat beskeder
+minemate.msg.coming=§e%1: §fKommer til dig!
+minemate.msg.not_found_bodyguard=§cBodyguard ikke fundet!
+minemate.msg.not_found_lumberjack=§cSkovhugger ikke fundet!
+minemate.msg.bg_following=§e%1: §fFølger dig!
+minemate.msg.bg_staying=§e%1: §fBliver her!
+minemate.msg.lj_following=§eSkovhugger: §fFølger dig!
+minemate.msg.lj_chopping=§eSkovhugger: §fHugger træer i nærheden!

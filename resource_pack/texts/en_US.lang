@@ -27,3 +27,16 @@ item.spawn_egg.entity.minemate:lumberjack.name=Lumberjack
 ## Item names
 item.minemate:bodyguard_whistle.name=Bodyguard Whistle
 item.minemate:lumberjack_whistle.name=Lumberjack Whistle
+
+## Interaction buttons
+minemate.interact.stay_follow=Stay / Follow
+minemate.interact.chop_toggle=Toggle Chopping
+
+## Chat messages
+minemate.msg.coming=§e%1: §fComing to you!
+minemate.msg.not_found_bodyguard=§cBodyguard not found!
+minemate.msg.not_found_lumberjack=§cLumberjack not found!
+minemate.msg.bg_following=§e%1: §fFollowing you!
+minemate.msg.bg_staying=§e%1: §fStaying here!
+minemate.msg.lj_following=§eLumberjack: §fFollowing you!
+minemate.msg.lj_chopping=§eLumberjack: §fChopping trees nearby!

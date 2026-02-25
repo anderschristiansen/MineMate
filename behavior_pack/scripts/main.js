@@ -17,17 +17,56 @@ const NPC_WEAPONS = {
     "minemate:lumberjack":        "minecraft:iron_axe"
 };
 
+// Locale-aware name maps
 const NPC_NAMES = {
-    "minemate:bodyguard_dirt":    "Dirt Bodyguard",
-    "minemate:bodyguard_copper":  "Copper Bodyguard",
-    "minemate:bodyguard_iron":    "Iron Bodyguard",
-    "minemate:bodyguard_gold":    "Gold Bodyguard",
-    "minemate:bodyguard_diamond": "Diamond Bodyguard",
-    "minemate:bodyguard_nether":  "Nether Bodyguard",
-    "minemate:guard_soldier":     "Guard Soldier",
-    "minemate:guard_sentry":      "Guard Sentry",
-    "minemate:lumberjack":        "Lumberjack"
+    en: {
+        "minemate:bodyguard_dirt":    "Dirt Bodyguard",
+        "minemate:bodyguard_copper":  "Copper Bodyguard",
+        "minemate:bodyguard_iron":    "Iron Bodyguard",
+        "minemate:bodyguard_gold":    "Gold Bodyguard",
+        "minemate:bodyguard_diamond": "Diamond Bodyguard",
+        "minemate:bodyguard_nether":  "Nether Bodyguard",
+        "minemate:guard_soldier":     "Guard Soldier",
+        "minemate:guard_sentry":      "Guard Sentry",
+        "minemate:lumberjack":        "Lumberjack"
+    },
+    da: {
+        "minemate:bodyguard_dirt":    "Jord Bodyguard",
+        "minemate:bodyguard_copper":  "Kobber Bodyguard",
+        "minemate:bodyguard_iron":    "Jern Bodyguard",
+        "minemate:bodyguard_gold":    "Guld Bodyguard",
+        "minemate:bodyguard_diamond": "Diamant Bodyguard",
+        "minemate:bodyguard_nether":  "Nether Bodyguard",
+        "minemate:guard_soldier":     "Vagt Soldat",
+        "minemate:guard_sentry":      "Vagt Vagtpost",
+        "minemate:lumberjack":        "Skovhugger"
+    }
 };
+
+const STATUS_TEXT = {
+    en: { staying: "Staying", following: "Following", chopping: "Chopping" },
+    da: { staying: "Venter", following: "Følger", chopping: "Hugger" }
+};
+
+let cachedLang = "en";
+
+function detectLang() {
+    try {
+        const players = world.getAllPlayers();
+        for (const p of players) {
+            if (p.locale && p.locale.startsWith("da")) { cachedLang = "da"; return; }
+        }
+        cachedLang = "en";
+    } catch (_) {}
+}
+
+function getName(typeId) {
+    return (NPC_NAMES[cachedLang] || NPC_NAMES.en)[typeId] || "NPC";
+}
+
+function getStatus(key) {
+    return (STATUS_TEXT[cachedLang] || STATUS_TEXT.en)[key] || key;
+}
 
 // --- Entity spawn handler ---
 world.afterEvents.entitySpawn.subscribe((event) => {
@@ -41,7 +80,6 @@ world.afterEvents.entitySpawn.subscribe((event) => {
 
     system.run(() => {
         if (isBodyguard || isLumberjack) {
-            // --- Tame + one-per-player (bodyguard OR lumberjack) ---
             const family = isBodyguard ? BODYGUARD_FAMILY : LUMBERJACK_FAMILY;
             const players = entity.dimension.getPlayers();
             if (players.length === 0) return;
@@ -54,7 +92,6 @@ world.afterEvents.entitySpawn.subscribe((event) => {
                 return d < best.d ? { player, d } : best;
             }, { player: players[0], d: Infinity }).player;
 
-            // Kill nearest player's existing companion of same type
             const existing = entity.dimension.getEntities({ families: [family] });
             for (const other of existing) {
                 if (other.id === entity.id) continue;
@@ -64,30 +101,24 @@ world.afterEvents.entitySpawn.subscribe((event) => {
                 }
             }
 
-            // Tame the new companion to the nearest player
             const tameable = entity.getComponent("minecraft:tameable");
             if (tameable) {
                 tameable.tame(nearest);
             }
         }
 
-        // --- Shared: set name + equip weapon ---
-        const name = NPC_NAMES[entity.typeId];
-        if (name) {
-            entity.nameTag = name;
-        }
+        entity.nameTag = getName(entity.typeId);
 
         const weapon = NPC_WEAPONS[entity.typeId];
         if (weapon) {
             entity.runCommandAsync(`replaceitem entity @s slot.weapon.mainhand 0 ${weapon} 1`);
         }
-
     });
 });
 
 // --- Guard group aggro: tag attacker so all guards target them ---
 const AGGRO_TAG = "minemate_aggro";
-const AGGRO_DURATION = 600; // 30 seconds in ticks
+const AGGRO_DURATION = 600;
 
 world.afterEvents.entityHurt.subscribe((event) => {
     const hurtEntity = event.hurtEntity;
@@ -99,7 +130,6 @@ world.afterEvents.entityHurt.subscribe((event) => {
     const isVillager = typeFamily && typeFamily.hasTypeFamily("villager");
     if (!isGuard && !isVillager) return;
 
-    // Don't tag fellow guards/NPCs — prevents friendly fire aggro
     const attackerFamily = attacker.getComponent("minecraft:type_family");
     if (attackerFamily && attackerFamily.hasTypeFamily(NPC_FAMILY)) return;
 
@@ -108,7 +138,6 @@ world.afterEvents.entityHurt.subscribe((event) => {
             if (!attacker.hasTag(AGGRO_TAG)) {
                 attacker.addTag(AGGRO_TAG);
             }
-            // Remove tag after 30 seconds
             system.runTimeout(() => {
                 try { attacker.removeTag(AGGRO_TAG); } catch (_) {}
             }, AGGRO_DURATION);
@@ -121,7 +150,6 @@ world.afterEvents.playerSpawn.subscribe((event) => {
     if (event.initialSpawn) return;
     system.run(() => {
         try { event.player.removeTag(AGGRO_TAG); } catch (_) {}
-        // Reset guard AI so hurt_by_target forgets the player
         const guards = event.player.dimension.getEntities({ families: [GUARD_FAMILY] });
         for (const guard of guards) {
             try { guard.runCommandAsync("tp @s ~ ~ ~"); } catch (_) {}
@@ -134,15 +162,17 @@ const TOTAL_HEARTS = 10;
 const REGEN_AMOUNT = 1;
 
 function buildHealthTag(entity) {
-    let name = NPC_NAMES[entity.typeId] || "NPC";
-    // Show status for bodyguards
+    let name = getName(entity.typeId);
     const typeFamily = entity.getComponent("minecraft:type_family");
     if (typeFamily && typeFamily.hasTypeFamily(BODYGUARD_FAMILY)) {
-        name += entity.hasTag("staying") ? " §c[Staying]" : " §a[Following]";
+        name += entity.hasTag("staying")
+            ? ` §c[${getStatus("staying")}]`
+            : ` §a[${getStatus("following")}]`;
     }
-    // Show chopping status for lumberjack
     if (entity.typeId === "minemate:lumberjack") {
-        name += entity.hasTag("chopping") ? " §a[Chopping]" : " §7[Following]";
+        name += entity.hasTag("chopping")
+            ? ` §a[${getStatus("chopping")}]`
+            : ` §7[${getStatus("following")}]`;
     }
     const health = entity.getComponent("minecraft:health");
     if (!health) return name;
@@ -153,20 +183,18 @@ function buildHealthTag(entity) {
     return name + "\n" + red + gray;
 }
 
-// 1 HP every 5 seconds (100 ticks)
 system.runInterval(() => {
+    detectLang();
     for (const dim of ["overworld", "nether", "the_end"]) {
         const npcs = world.getDimension(dim).getEntities({ families: [NPC_FAMILY] });
         for (const npc of npcs) {
             try {
-                // Regen
                 const health = npc.getComponent("minecraft:health");
                 if (health && health.currentValue < health.effectiveMax) {
                     health.setCurrentValue(Math.min(health.currentValue + REGEN_AMOUNT, health.effectiveMax));
                 }
-                // Name tag
                 npc.nameTag = buildHealthTag(npc);
-            } catch (_) { /* entity may have been removed */ }
+            } catch (_) {}
         }
     }
 }, 100);
@@ -178,13 +206,10 @@ world.afterEvents.itemUse.subscribe((event) => {
     if (!item) return;
 
     let family = null;
-    let label = null;
     if (item.typeId === "minemate:bodyguard_whistle") {
         family = BODYGUARD_FAMILY;
-        label = "Bodyguard";
     } else if (item.typeId === "minemate:lumberjack_whistle") {
         family = LUMBERJACK_FAMILY;
-        label = "Lumberjack";
     }
     if (!family) return;
 
@@ -196,7 +221,6 @@ world.afterEvents.itemUse.subscribe((event) => {
                 const tameable = companion.getComponent("minecraft:tameable");
                 if (tameable && tameable.tamedToPlayerId === player.id) {
                     companion.teleport(player.location);
-                    // Switch to following mode
                     if (family === BODYGUARD_FAMILY && companion.hasTag("staying")) {
                         companion.removeTag("staying");
                         companion.triggerEvent("minemate:follow");
@@ -206,14 +230,16 @@ world.afterEvents.itemUse.subscribe((event) => {
                         ljAnchors.delete(companion.id);
                         companion.triggerEvent("minemate:stop_chopping");
                     }
-                    const name = NPC_NAMES[companion.typeId] || label;
-                    player.sendMessage(`§e${name}: §fComing to you!`);
+                    player.sendMessage({ rawtext: [{ translate: "minemate.msg.coming", with: { rawtext: [{ translate: "entity." + companion.typeId + ".name" }] } }] });
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                player.sendMessage(`§c${label} not found!`);
+                const notFoundKey = family === BODYGUARD_FAMILY
+                    ? "minemate.msg.not_found_bodyguard"
+                    : "minemate.msg.not_found_lumberjack";
+                player.sendMessage({ rawtext: [{ translate: notFoundKey }] });
             }
         } catch (_) {}
     });
@@ -227,15 +253,14 @@ world.afterEvents.playerInteractWithEntity.subscribe((event) => {
 
     system.run(() => {
         try {
-            const name = NPC_NAMES[entity.typeId] || "Bodyguard";
             if (entity.hasTag("staying")) {
                 entity.removeTag("staying");
                 entity.triggerEvent("minemate:follow");
-                event.player.sendMessage(`§e${name}: §fFollowing you!`);
+                event.player.sendMessage({ rawtext: [{ translate: "minemate.msg.bg_following", with: { rawtext: [{ translate: "entity." + entity.typeId + ".name" }] } }] });
             } else {
                 entity.addTag("staying");
                 entity.triggerEvent("minemate:stay");
-                event.player.sendMessage(`§e${name}: §fStaying here!`);
+                event.player.sendMessage({ rawtext: [{ translate: "minemate.msg.bg_staying", with: { rawtext: [{ translate: "entity." + entity.typeId + ".name" }] } }] });
             }
         } catch (_) {}
     });
@@ -252,8 +277,8 @@ const LOG_TYPES = new Set([
     "minecraft:azalea_leaves_flowered"
 ]);
 
-const CHOP_RADIUS = 15;           // max distance from anchor
-const ljAnchors = new Map();      // entity id -> { x, y, z }
+const CHOP_RADIUS = 15;
+const ljAnchors = new Map();
 
 world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     const entity = event.target;
@@ -262,25 +287,23 @@ world.afterEvents.playerInteractWithEntity.subscribe((event) => {
     system.run(() => {
         try {
             if (entity.hasTag("chopping")) {
-                // Stop chopping — return to following
                 entity.removeTag("chopping");
                 ljAnchors.delete(entity.id);
                 entity.triggerEvent("minemate:stop_chopping");
-                event.player.sendMessage("§eLumberjack: §fFollowing you!");
+                event.player.sendMessage({ rawtext: [{ translate: "minemate.msg.lj_following" }] });
             } else {
-                // Start chopping — anchor at current position
                 entity.addTag("chopping");
                 ljAnchors.set(entity.id, { x: entity.location.x, y: entity.location.y, z: entity.location.z });
                 entity.triggerEvent("minemate:start_chopping");
-                event.player.sendMessage("§eLumberjack: §fChopping trees nearby!");
+                event.player.sendMessage({ rawtext: [{ translate: "minemate.msg.lj_chopping" }] });
             }
         } catch (_) {}
     });
 });
 
 // Walk toward tree + chop when close — runs every 4 ticks (0.2 s)
-const ljTargets = new Map();      // entity id -> { x, y, z }
-const ljChopCooldown = new Map(); // entity id -> intervals remaining
+const ljTargets = new Map();
+const ljChopCooldown = new Map();
 let ljScanTick = 0;
 
 function findNearestLog(dim, loc, anchor) {
@@ -294,7 +317,6 @@ function findNearestLog(dim, loc, anchor) {
             for (let dz = -8; dz <= 8; dz++) {
                 try {
                     const px = bx + dx, py = by + dy, pz = bz + dz;
-                    // Must be within anchor radius
                     const ax = px + 0.5 - anchor.x;
                     const az = pz + 0.5 - anchor.z;
                     if (ax * ax + az * az > CHOP_RADIUS * CHOP_RADIUS) continue;
@@ -326,7 +348,6 @@ system.runInterval(() => {
                 const anchor = ljAnchors.get(lj.id);
                 if (!anchor) continue;
 
-                // Enforce anchor radius
                 const loc = lj.location;
                 const adx = loc.x - anchor.x;
                 const adz = loc.z - anchor.z;
@@ -335,7 +356,6 @@ system.runInterval(() => {
                     continue;
                 }
 
-                // Validate existing target
                 let target = ljTargets.get(lj.id);
                 if (target) {
                     try {
@@ -350,7 +370,6 @@ system.runInterval(() => {
                     }
                 }
 
-                // Scan for new target periodically
                 if (!target && shouldScan) {
                     target = findNearestLog(dim, lj.location, anchor);
                     if (target) ljTargets.set(lj.id, target);
@@ -358,7 +377,6 @@ system.runInterval(() => {
 
                 if (!target) continue;
 
-                // Decrement chop cooldown
                 const cd = ljChopCooldown.get(lj.id) || 0;
                 if (cd > 0) ljChopCooldown.set(lj.id, cd - 1);
 
@@ -368,7 +386,6 @@ system.runInterval(() => {
                 const hdist = Math.sqrt((tx - loc.x) ** 2 + (tz - loc.z) ** 2);
 
                 if (hdist > 1.5) {
-                    // Walk toward the tree
                     const dx = tx - loc.x;
                     const dz = tz - loc.z;
                     const step = 1.2;
@@ -377,14 +394,12 @@ system.runInterval(() => {
                         { facingLocation: { x: tx, y: ty, z: tz } }
                     );
                 } else {
-                    // Face the tree
                     lj.teleport(loc, { facingLocation: { x: tx, y: ty, z: tz } });
 
-                    // Chop when cooldown is ready
                     if (cd <= 0) {
                         lj.runCommandAsync(`setblock ${target.x} ${target.y} ${target.z} air destroy`);
                         ljTargets.delete(lj.id);
-                        ljChopCooldown.set(lj.id, 0); // chop every tick (10 ticks = 0.5s interval)
+                        ljChopCooldown.set(lj.id, 0);
                     }
                 }
             } catch (_) {}
