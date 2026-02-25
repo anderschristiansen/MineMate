@@ -1,17 +1,29 @@
-{
-    "format_version": 2,
-    "header": {
-        "name": "MineMate Resource Pack",
-        "description": "Visuals for the MineMate companion.",
-        "uuid": "7b21838e-2e10-4517-a71e-59e65330a196",
-        "version": [1, 0, 0],
-        "min_engine_version": [1, 20, 50]
-    },
-    "modules": [
-        {
-            "type": "resources",
-            "uuid": "116ea532-6721-4141-8be1-f889228e8335",
-            "version": [1, 0, 0]
-        }
-    ]
+﻿{
+    "format_version":  2,
+    "header":  {
+                   "name":  "MineMate Resource Pack",
+                   "description":  "Visuals for the MineMate companion. v1.0.3",
+                   "uuid":  "7b21838e-2e10-4517-a71e-59e65330a196",
+                   "version":  [
+                                   1,
+                                   0,
+                                   3
+                               ],
+                   "min_engine_version":  [
+                                              1,
+                                              20,
+                                              50
+                                          ]
+               },
+    "modules":  [
+                    {
+                        "type":  "resources",
+                        "uuid":  "116ea532-6721-4141-8be1-f889228e8335",
+                        "version":  [
+                                        1,
+                                        0,
+                                        3
+                                    ]
+                    }
+                ]
 }

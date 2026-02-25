@@ -2,7 +2,12 @@
   "permissions": {
     "allow": [
       "Bash(powershell -ExecutionPolicy Bypass -File \"c:/Developer/MineCraft/MineMate/deploy.ps1\")",
-      "Bash(export PATH=\"$PATH:/c/Program Files/GitHub CLI\" && gh --version 2>&1)"
+      "Bash(export PATH=\"$PATH:/c/Program Files/GitHub CLI\" && gh --version 2>&1)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:wiki.bedrock.dev)",
+      "WebFetch(domain:bedrock.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:www.the-bedrock-notebook.dev)"
     ]
   }
 }

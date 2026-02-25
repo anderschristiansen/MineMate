@@ -1,5 +1,5 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
             "identifier": "minemate:companion_dirt",
@@ -13,6 +13,9 @@
                 "controller": "controller.animation.minemate.companion"
             },
             "scripts": {
+                "pre_animation": [
+                    "variable.tcos0 = math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed * 57.3;"
+                ],
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],

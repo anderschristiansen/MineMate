@@ -1,34 +1,54 @@
 {
-    "format_version": 2,
-    "header": {
-        "name": "MineMate Behavior Pack",
-        "description": "A companion NPC that follows you.",
-        "uuid": "72fa875c-ca4d-4df9-831a-358e359a082c",
-        "version": [1, 0, 0],
-        "min_engine_version": [1, 21, 0]
-    },
-    "modules": [
-        {
-            "type": "data",
-            "uuid": "ad8324d3-19b8-45c6-b88d-285d5ac51706",
-            "version": [1, 0, 0]
-        },
-        {
-            "type": "script",
-            "language": "javascript",
-            "uuid": "e3b4c1d2-7f8a-4e9b-b2c3-d4e5f6a7b8c9",
-            "entry": "scripts/main.js",
-            "version": [1, 0, 0]
-        }
-    ],
-    "dependencies": [
-        {
-            "uuid": "7b21838e-2e10-4517-a71e-59e65330a196",
-            "version": [1, 0, 0]
-        },
-        {
-            "module_name": "@minecraft/server",
-            "version": "1.15.0"
-        }
-    ]
+    "format_version":  2,
+    "header":  {
+                   "name":  "MineMate Behavior Pack",
+                   "description":  "A companion NPC that follows you. v1.0.3",
+                   "uuid":  "72fa875c-ca4d-4df9-831a-358e359a082c",
+                   "version":  [
+                                   1,
+                                   0,
+                                   3
+                               ],
+                   "min_engine_version":  [
+                                              1,
+                                              21,
+                                              0
+                                          ]
+               },
+    "modules":  [
+                    {
+                        "type":  "data",
+                        "uuid":  "ad8324d3-19b8-45c6-b88d-285d5ac51706",
+                        "version":  [
+                                        1,
+                                        0,
+                                        3
+                                    ]
+                    },
+                    {
+                        "type":  "script",
+                        "language":  "javascript",
+                        "uuid":  "e3b4c1d2-7f8a-4e9b-b2c3-d4e5f6a7b8c9",
+                        "entry":  "scripts/main.js",
+                        "version":  [
+                                        1,
+                                        0,
+                                        3
+                                    ]
+                    }
+                ],
+    "dependencies":  [
+                         {
+                             "uuid":  "7b21838e-2e10-4517-a71e-59e65330a196",
+                             "version":  [
+                                             1,
+                                             0,
+                                             3
+                                         ]
+                         },
+                         {
+                             "module_name":  "@minecraft/server",
+                             "version":  "1.15.0"
+                         }
+                     ]
 }
