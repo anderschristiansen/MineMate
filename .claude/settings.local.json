@@ -9,7 +9,11 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:www.the-bedrock-notebook.dev)",
       "Bash(powershell -File:*)",
-      "Bash(powershell -Command \":*)"
+      "Bash(powershell -Command \":*)",
+      "Bash(ls *.png)",
+      "Bash(git add behavior_pack/scripts/main.js behavior_pack/trading/minemate_trader.json resource_pack/textures/entity/dirt.png resource_pack/textures/entity/gold.png resource_pack/textures/entity/iron.png resource_pack/textures/entity/nether.png)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
     ]
   }
 }
