@@ -2,12 +2,12 @@
     "format_version":  2,
     "header":  {
                    "name":  "MineMate Behavior Pack",
-                   "description":  "A companion NPC that follows you. v1.0.3",
+                   "description":  "A companion NPC that follows you. v1.0.10",
                    "uuid":  "72fa875c-ca4d-4df9-831a-358e359a082c",
                    "version":  [
                                    1,
                                    0,
-                                   3
+                                   10
                                ],
                    "min_engine_version":  [
                                               1,
@@ -22,7 +22,7 @@
                         "version":  [
                                         1,
                                         0,
-                                        3
+                                        10
                                     ]
                     },
                     {
@@ -33,7 +33,7 @@
                         "version":  [
                                         1,
                                         0,
-                                        3
+                                        10
                                     ]
                     }
                 ],
@@ -43,7 +43,7 @@
                              "version":  [
                                              1,
                                              0,
-                                             3
+                                             10
                                          ]
                          },
                          {

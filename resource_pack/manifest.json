@@ -1,13 +1,13 @@
-﻿{
+{
     "format_version":  2,
     "header":  {
                    "name":  "MineMate Resource Pack",
-                   "description":  "Visuals for the MineMate companion. v1.0.3",
+                   "description":  "Visuals for the MineMate companion. v1.0.10",
                    "uuid":  "7b21838e-2e10-4517-a71e-59e65330a196",
                    "version":  [
                                    1,
                                    0,
-                                   3
+                                   10
                                ],
                    "min_engine_version":  [
                                               1,
@@ -22,7 +22,7 @@
                         "version":  [
                                         1,
                                         0,
-                                        3
+                                        10
                                     ]
                     }
                 ]

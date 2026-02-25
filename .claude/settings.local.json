@@ -7,7 +7,9 @@
       "WebFetch(domain:wiki.bedrock.dev)",
       "WebFetch(domain:bedrock.dev)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:www.the-bedrock-notebook.dev)"
+      "WebFetch(domain:www.the-bedrock-notebook.dev)",
+      "Bash(powershell -File:*)",
+      "Bash(powershell -Command \":*)"
     ]
   }
 }

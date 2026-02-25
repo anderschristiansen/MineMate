@@ -8,7 +8,7 @@ const COMPANION_WEAPONS = {
     "minemate:companion_iron":    "minecraft:iron_axe",
     "minemate:companion_gold":    "minecraft:golden_sword",
     "minemate:companion_diamond": "minecraft:diamond_sword",
-    "minemate:companion_nether":  "minecraft:netherite_axe"
+    "minemate:companion_nether":  "minecraft:netherite_sword"
 };
 
 const COMPANION_NAMES = {
@@ -68,3 +68,38 @@ world.afterEvents.entitySpawn.subscribe((event) => {
         }
     });
 });
+
+// --- Health bar name tag updates ---
+const TOTAL_HEARTS = 10;
+
+function buildHealthTag(entity) {
+    const name = COMPANION_NAMES[entity.typeId] || "Companion";
+    const health = entity.getComponent("minecraft:health");
+    if (!health) return name;
+
+    const filled = Math.round((health.currentValue / health.effectiveMax) * TOTAL_HEARTS);
+    const red = "§c" + "❤".repeat(filled);
+    const gray = "§7" + "❤".repeat(TOTAL_HEARTS - filled);
+    return name + "\n" + red + gray;
+}
+
+// --- Passive regeneration ---
+// 1 HP every 5 seconds (100 ticks)
+const REGEN_AMOUNT = 1;
+
+system.runInterval(() => {
+    for (const dim of ["overworld", "nether", "the_end"]) {
+        const companions = world.getDimension(dim).getEntities({ families: [COMPANION_FAMILY] });
+        for (const companion of companions) {
+            try {
+                // Regen
+                const health = companion.getComponent("minecraft:health");
+                if (health && health.currentValue < health.effectiveMax) {
+                    health.setCurrentValue(Math.min(health.currentValue + REGEN_AMOUNT, health.effectiveMax));
+                }
+                // Name tag
+                companion.nameTag = buildHealthTag(companion);
+            } catch (_) { /* entity may have been removed */ }
+        }
+    }
+}, 100);
