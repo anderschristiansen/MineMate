@@ -56,9 +56,13 @@ Uses `@minecraft/server` v1.15.0. Script module declared in `behavior_pack/manif
 All 6 bodyguard tiers sold by `minemate:trader` in `trading/minemate_trader.json`.
 Spawn egg item IDs use `_spawn_egg` suffix: `minemate:companion_dirt_spawn_egg`.
 
+## Target Platform
+This addon runs on a Realm played from an iPad (iOS). All features, scripts, and JSON must be fully compatible with Minecraft Bedrock on tablet/iOS. Avoid anything that only works on Windows/PC — always verify that APIs, components, and format versions are supported on the mobile Bedrock client.
+
 ## Key Rules
 - Use vanilla JSON behavior components first — only add scripting when necessary
 - One entity file per tier (no component group switching between tiers)
 - Textures live in `resource_pack/textures/entity/` with simple names
 - Always run `.\deploy.ps1` after changes — it handles PC deploy + mcpack generation
 - Add new entity names to both `en_US.lang` and `da_DK.lang`
+- All JSON files must be UTF-8 without BOM (iOS/Realm rejects BOM-encoded files)
