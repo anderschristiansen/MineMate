@@ -1,0 +1,20 @@
+{
+    "tiers": [
+        {
+            "trades": [
+                {
+                    "wants": [ { "item": "minecraft:iron_ingot", "quantity": 8 } ],
+                    "gives": [ { "item": "minemate:lumberjack_spawn_egg", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                },
+                {
+                    "wants": [ { "item": "minecraft:iron_ingot", "quantity": 4 } ],
+                    "gives": [ { "item": "minemate:lumberjack_whistle", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
+                }
+            ]
+        }
+    ]
+}

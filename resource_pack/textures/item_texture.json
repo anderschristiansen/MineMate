@@ -1,0 +1,30 @@
+{
+    "resource_pack_name": "MineMate",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "bodyguard_whistle": {
+            "textures": "textures/items/bodyguardwhistle"
+        },
+        "lumberjack_whistle": {
+            "textures": "textures/items/lumberjackwhistle"
+        },
+        "egg_bodyguard_dirt": {
+            "textures": "textures/items/egg_dirt"
+        },
+        "egg_bodyguard_copper": {
+            "textures": "textures/items/egg_copper"
+        },
+        "egg_bodyguard_iron": {
+            "textures": "textures/items/egg_iron"
+        },
+        "egg_bodyguard_gold": {
+            "textures": "textures/items/egg_gold"
+        },
+        "egg_bodyguard_diamond": {
+            "textures": "textures/items/egg_diamond"
+        },
+        "egg_bodyguard_nether": {
+            "textures": "textures/items/egg_nether"
+        }
+    }
+}

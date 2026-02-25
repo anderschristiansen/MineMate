@@ -2,9 +2,9 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "identifier": "minemate:bodyguard_diamond",
+            "identifier": "minemate:lumberjack",
             "materials": { "default": "entity_alphatest" },
-            "textures": { "default": "textures/entity/diamond" },
+            "textures": { "default": "textures/entity/lumberjack" },
             "geometry": { "default": "geometry.humanoid" },
             "animations": {
                 "walk": "animation.minemate.companion.walk",
@@ -19,7 +19,7 @@
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],
-            "spawn_egg": { "texture": "egg_bodyguard_diamond" }
+            "spawn_egg": { "base_color": "#5D8A3C", "overlay_color": "#3E2723" }
         }
     }
 }

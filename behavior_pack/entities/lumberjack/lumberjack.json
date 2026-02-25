@@ -2,7 +2,7 @@
     "format_version": "1.21.70",
     "minecraft:entity": {
         "description": {
-            "identifier": "minemate:bodyguard_gold",
+            "identifier": "minemate:lumberjack",
             "is_spawnable": true,
             "is_summonable": true,
             "is_experimental": false
@@ -19,15 +19,16 @@
                 },
                 "minecraft:behavior.random_stroll": { "priority": 7, "speed_multiplier": 0.8 }
             },
-            "minemate:staying": {
+            "minemate:chopping": {
+                "minecraft:behavior.random_stroll": { "priority": 5, "speed_multiplier": 0.6, "xz_dist": 4, "y_dist": 2 }
             }
         },
         "components": {
-            "minecraft:type_family": { "family": ["mob", "minemate_npc", "minemate_bodyguard"] },
+            "minecraft:type_family": { "family": ["mob", "minemate_npc", "minemate_lumberjack"] },
             "minecraft:tameable": { "probability": 0, "tame_items": "minecraft:barrier" },
-            "minecraft:health": { "value": 50, "max": 50 },
-            "minecraft:attack": { "damage": 9 },
-            "minecraft:movement": { "value": 0.36 },
+            "minecraft:health": { "value": 30, "max": 30 },
+            "minecraft:attack": { "damage": 4 },
+            "minecraft:movement": { "value": 0.32 },
             "minecraft:movement.basic": {},
             "minecraft:navigation.walk": { "can_path_over_water": false, "avoid_water": true, "can_open_doors": true },
             "minecraft:physics": {},
@@ -38,11 +39,11 @@
                 "priority": 2,
                 "must_see": true,
                 "reselect_targets": true,
-                "within_radius": 18.0,
+                "within_radius": 8.0,
                 "entity_types": [
                     {
                         "filters": { "test": "is_family", "subject": "other", "value": "monster" },
-                        "max_dist": 18.0
+                        "max_dist": 8.0
                     }
                 ]
             },
@@ -56,23 +57,23 @@
                         "on_interact": {
                             "filters": { "test": "is_family", "subject": "other", "value": "player" }
                         },
-                        "interact_text": "Stay / Follow",
+                        "interact_text": "Toggle Chopping",
                         "use_item": false
                     }
                 ]
             },
-            "minecraft:equipment": { "table": "loot_tables/equipment/gold.json", "slot_drop_chance": [{ "slot": "slot.weapon.mainhand", "drop_chance": 0.0 }] }
+            "minecraft:equipment": { "table": "loot_tables/equipment/lumberjack.json", "slot_drop_chance": [{ "slot": "slot.weapon.mainhand", "drop_chance": 0.0 }] }
         },
         "events": {
             "minecraft:entity_spawned": {
                 "add": { "component_groups": ["minemate:following"] }
             },
-            "minemate:stay": {
+            "minemate:start_chopping": {
                 "remove": { "component_groups": ["minemate:following"] },
-                "add": { "component_groups": ["minemate:staying"] }
+                "add": { "component_groups": ["minemate:chopping"] }
             },
-            "minemate:follow": {
-                "remove": { "component_groups": ["minemate:staying"] },
+            "minemate:stop_chopping": {
+                "remove": { "component_groups": ["minemate:chopping"] },
                 "add": { "component_groups": ["minemate:following"] }
             }
         }

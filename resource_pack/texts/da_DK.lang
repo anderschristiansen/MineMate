@@ -7,7 +7,9 @@ entity.minemate:bodyguard_diamond.name=Diamant Bodyguard
 entity.minemate:bodyguard_nether.name=Nether Bodyguard
 entity.minemate:guard_soldier.name=Vagt Soldat
 entity.minemate:guard_sentry.name=Vagt Vagtpost
-entity.minemate:trader.name=MineMate Handlende
+entity.minemate:recruiter.name=Rekrutterer
+entity.minemate:contractor.name=Entreprenør
+entity.minemate:lumberjack.name=Skovhugger
 
 ## Gydeæg navne
 item.spawn_egg.entity.minemate:bodyguard_dirt.name=Jord Bodyguard
@@ -18,4 +20,10 @@ item.spawn_egg.entity.minemate:bodyguard_diamond.name=Diamant Bodyguard
 item.spawn_egg.entity.minemate:bodyguard_nether.name=Nether Bodyguard
 item.spawn_egg.entity.minemate:guard_soldier.name=Vagt Soldat
 item.spawn_egg.entity.minemate:guard_sentry.name=Vagt Vagtpost
-item.spawn_egg.entity.minemate:trader.name=MineMate Handlende
+item.spawn_egg.entity.minemate:recruiter.name=Rekrutterer
+item.spawn_egg.entity.minemate:contractor.name=Entreprenør
+item.spawn_egg.entity.minemate:lumberjack.name=Skovhugger
+
+## Genstandsnavne
+item.minemate:bodyguard_whistle.name=Bodyguard Fløjte
+item.minemate:lumberjack_whistle.name=Skovhugger Fløjte

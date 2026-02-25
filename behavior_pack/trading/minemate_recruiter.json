@@ -37,6 +37,12 @@
                     "gives": [ { "item": "minemate:bodyguard_nether_spawn_egg", "quantity": 1 } ],
                     "max_uses": 99,
                     "reward_exp": false
+                },
+                {
+                    "wants": [ { "item": "minecraft:iron_ingot", "quantity": 4 } ],
+                    "gives": [ { "item": "minemate:bodyguard_whistle", "quantity": 1 } ],
+                    "max_uses": 99,
+                    "reward_exp": false
                 }
             ]
         }

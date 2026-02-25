@@ -7,6 +7,21 @@
             "is_summonable": true,
             "is_experimental": false
         },
+        "component_groups": {
+            "minemate:following": {
+                "minecraft:behavior.follow_owner": {
+                    "priority": 4,
+                    "speed_multiplier": 1.2,
+                    "start_distance": 5.0,
+                    "stop_distance": 2.0,
+                    "can_teleport": true,
+                    "ignore_vibration": true
+                },
+                "minecraft:behavior.random_stroll": { "priority": 7, "speed_multiplier": 0.8 }
+            },
+            "minemate:staying": {
+            }
+        },
         "components": {
             "minecraft:type_family": { "family": ["mob", "minemate_npc", "minemate_bodyguard"] },
             "minecraft:tameable": { "probability": 0, "tame_items": "minecraft:barrier" },
@@ -19,14 +34,6 @@
             "minecraft:jump.static": {},
             "minecraft:collision_box": { "width": 0.6, "height": 1.8 },
             "minecraft:follow_range": { "value": 32, "max": 32 },
-            "minecraft:behavior.follow_owner": {
-                "priority": 4,
-                "speed_multiplier": 1.2,
-                "start_distance": 5.0,
-                "stop_distance": 2.0,
-                "can_teleport": true,
-                "ignore_vibration": true
-            },
             "minecraft:behavior.nearest_attackable_target": {
                 "priority": 2,
                 "must_see": true,
@@ -43,8 +50,31 @@
             "minecraft:behavior.hurt_by_target": { "priority": 1 },
             "minecraft:behavior.look_at_player": { "priority": 8, "look_distance": 6.0 },
             "minecraft:behavior.random_look_around": { "priority": 9 },
-            "minecraft:equipment": { "table": "loot_tables/equipment/copper.json", "slot_drop_chance": [{ "slot": "slot.weapon.mainhand", "drop_chance": 0.0 }] },
-            "minecraft:behavior.random_stroll": { "priority": 7, "speed_multiplier": 0.8 }
+            "minecraft:interact": {
+                "interactions": [
+                    {
+                        "on_interact": {
+                            "filters": { "test": "is_family", "subject": "other", "value": "player" }
+                        },
+                        "interact_text": "Stay / Follow",
+                        "use_item": false
+                    }
+                ]
+            },
+            "minecraft:equipment": { "table": "loot_tables/equipment/copper.json", "slot_drop_chance": [{ "slot": "slot.weapon.mainhand", "drop_chance": 0.0 }] }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": { "component_groups": ["minemate:following"] }
+            },
+            "minemate:stay": {
+                "remove": { "component_groups": ["minemate:following"] },
+                "add": { "component_groups": ["minemate:staying"] }
+            },
+            "minemate:follow": {
+                "remove": { "component_groups": ["minemate:staying"] },
+                "add": { "component_groups": ["minemate:following"] }
+            }
         }
     }
 }
