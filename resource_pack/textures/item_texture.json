@@ -25,6 +25,9 @@
         },
         "egg_bodyguard_nether": {
             "textures": "textures/items/egg_nether"
+        },
+        "egg_lumberjack": {
+            "textures": "textures/items/egg_lumberjack"
         }
     }
 }

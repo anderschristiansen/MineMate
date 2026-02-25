@@ -19,7 +19,7 @@
                 "animate": [ "controller" ]
             },
             "render_controllers": [ "controller.render.default" ],
-            "spawn_egg": { "base_color": "#5D8A3C", "overlay_color": "#3E2723" }
+            "spawn_egg": { "texture": "egg_lumberjack" }
         }
     }
 }
